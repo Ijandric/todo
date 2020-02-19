@@ -1,32 +1,47 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <b-navbar type="dark" variant="info">
+      <div class="container bg-info">
+        <b-navbar-brand class="brand"><router-link to="/" class="font-weight-light">OVER<span class="font-weight-bold">9000</span>TODOS</router-link></b-navbar-brand>
+      </div>
+    </b-navbar>
+    <router-view></router-view>
+  </v-app>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  created(){
+    this.$store.dispatch('retriveTodos');
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  *:focus {
+    outline:none
+  } 
+  #app {
+    background: #ececec;
+  }
+  .container {
+    background: #FFF;
+    height: 100%;
+  }
+  .text-white {
+    color: #FFF !important;
+  }
+  nav {
+     color: #FFF;
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    .brand {
+      color: inherit;
+      
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
     }
   }
-}
 </style>
